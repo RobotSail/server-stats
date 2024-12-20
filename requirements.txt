@@ -1,0 +1,4 @@
+pandas
+discord.py
+python-dotenv
+rich
