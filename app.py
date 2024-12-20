@@ -37,7 +37,10 @@ logger.addHandler(file_handler)
 print("discord token: " + len(os.environ["DISCORD_TOKEN"]) * "#")
 
 GUILD_ID = int(os.environ["GUILD_ID"])
-SAPPHIRE_ID = 678344927997853742
+BOT_IDS = [
+    678344927997853742,  # Sapphire
+    1318685917778808893,  # Son of Jeeves
+]
 
 
 class Events(StrEnum):
@@ -76,7 +79,8 @@ class StatCollectorClient(discord.Client):
         self.data_writer = data_writer
 
     async def on_message(self, message: discord.Message):
-        if message.author.id == SAPPHIRE_ID:
+        if message.author.id in BOT_IDS:
+            # ignore bots
             return
 
         # just note the channel
